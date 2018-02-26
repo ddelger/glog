@@ -5,14 +5,14 @@ import (
 	"os"
 )
 
-var logger = &Logger{Writer: StandardWriter(INFO)}
+var logger = &Logger{Writer: StandardLogger(INFO)}
 
 type Logger struct {
 	Writer LogWriter
 }
 
-func Writers(writers ...LogWriter) {
-	logger.Writer = MultiWriter(writers...)
+func Loggers(writers ...LogWriter) {
+	logger.Writer = MultiLogger(writers...)
 }
 
 func (l *Logger) log(level Level, format *string, args ...interface{}) {

@@ -4,7 +4,7 @@ type MultiLogWriter struct {
 	Writers []LogWriter
 }
 
-func MultiWriter(writers ...LogWriter) *MultiLogWriter {
+func MultiLogger(writers ...LogWriter) LogWriter {
 	return &MultiLogWriter{Writers: writers}
 }
 
