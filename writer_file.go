@@ -1,17 +1,17 @@
 package glog
 
 import (
-	"log"
 	"fmt"
+	"log"
 	"os"
 )
 
 func FileLogger(level Level, file *os.File) LogWriter {
 	loggers := map[Level]*log.Logger{
-		ERROR: log.New(file, fmt.Sprintf("[%s] ", ERROR.String()), DATE_TIME_FILE),
-		WARN:  log.New(file, fmt.Sprintf("[%s] ", WARN.String()), DATE_TIME_FILE),
-		INFO:  log.New(file, fmt.Sprintf("[%s] ", INFO.String()), DATE_TIME),
-		DEBUG: log.New(file, fmt.Sprintf("[%s] ", DEBUG.String()), DATE_TIME),
+		LevelError: log.New(file, fmt.Sprintf("[%s] ", LevelError.String()), FlagsDateTimeFile),
+		LevelWarn:  log.New(file, fmt.Sprintf("[%s] ", LevelWarn.String()), FlagsDateTimeFile),
+		LevelInfo:  log.New(file, fmt.Sprintf("[%s] ", LevelInfo.String()), FlagsDateTime),
+		LevelDebug: log.New(file, fmt.Sprintf("[%s] ", LevelDebug.String()), FlagsDateTime),
 	}
 
 	return WriterCloserLogger(level, file, loggers)

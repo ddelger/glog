@@ -1,8 +1,8 @@
 package glog
 
 import (
-	"log"
 	"fmt"
+	"log"
 	"os"
 
 	"github.com/mgutz/ansi"
@@ -10,10 +10,10 @@ import (
 
 func StandardLogger(level Level) LogWriter {
 	loggers := map[Level]*log.Logger{
-		ERROR: log.New(os.Stderr, fmt.Sprintf("%s[%s]%s ", ansi.Red, ERROR.String(), ansi.Reset), DATE_TIME_FILE),
-		WARN:  log.New(os.Stdout, fmt.Sprintf("%s[%s]%s ", ansi.Yellow, WARN.String(), ansi.Reset), DATE_TIME_FILE),
-		INFO:  log.New(os.Stdout, fmt.Sprintf("[%s] ", INFO.String()), DATE_TIME),
-		DEBUG: log.New(os.Stdout, fmt.Sprintf("[%s] ", DEBUG.String()), DATE_TIME),
+		LevelError: log.New(os.Stderr, fmt.Sprintf("%s[%s]%s ", ansi.Red, LevelError.String(), ansi.Reset), FlagsDateTimeFile),
+		LevelWarn:  log.New(os.Stdout, fmt.Sprintf("%s[%s]%s ", ansi.Yellow, LevelWarn.String(), ansi.Reset), FlagsDateTimeFile),
+		LevelInfo:  log.New(os.Stdout, fmt.Sprintf("[%s] ", LevelInfo.String()), FlagsDateTime),
+		LevelDebug: log.New(os.Stdout, fmt.Sprintf("[%s] ", LevelDebug.String()), FlagsDateTime),
 	}
 
 	return WriterLogger(level, os.Stdout, loggers)

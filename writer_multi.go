@@ -31,7 +31,7 @@ func (w *MultiLogWriter) Close() (err error) {
 }
 
 func (w *MultiLogWriter) LogLevel() Level {
-	l := ERROR
+	l := LevelError
 	for _, writer := range w.Writers {
 		if writer.LogLevel() > l {
 			l = writer.LogLevel()

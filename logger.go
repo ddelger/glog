@@ -5,7 +5,7 @@ import (
 	"os"
 )
 
-var logger = &Logger{Writer: StandardLogger(INFO)}
+var logger = &Logger{Writer: StandardLogger(LevelInfo)}
 
 type Logger struct {
 	Writer LogWriter
@@ -22,49 +22,49 @@ func (l *Logger) log(level Level, format *string, args ...interface{}) {
 }
 
 func (l *Logger) Fatal(args ...interface{}) {
-	l.log(ERROR, nil, args...)
+	l.log(LevelError, nil, args...)
 	os.Exit(1)
 }
 func (l *Logger) Fatalf(format string, args ...interface{}) {
-	l.log(ERROR, &format, args...)
+	l.log(LevelError, &format, args...)
 	os.Exit(1)
 }
 
 func (l *Logger) Panic(args ...interface{}) {
-	l.log(ERROR, nil, args...)
+	l.log(LevelError, nil, args...)
 	panic(fmt.Sprintln(args...))
 }
 func (l *Logger) Panicf(format string, args ...interface{}) {
-	l.log(ERROR, &format, args...)
+	l.log(LevelError, &format, args...)
 	panic(fmt.Sprintf(format, args...))
 }
 
 func (l *Logger) Error(args ...interface{}) {
-	l.log(ERROR, nil, args...)
+	l.log(LevelError, nil, args...)
 }
 func (l *Logger) Errorf(format string, args ...interface{}) {
-	l.log(ERROR, &format, args...)
+	l.log(LevelError, &format, args...)
 }
 
 func (l *Logger) Warn(args ...interface{}) {
-	l.log(WARN, nil, args...)
+	l.log(LevelWarn, nil, args...)
 }
 func (l *Logger) Warnf(format string, args ...interface{}) {
-	l.log(WARN, &format, args...)
+	l.log(LevelWarn, &format, args...)
 }
 
 func (l *Logger) Info(args ...interface{}) {
-	l.log(INFO, nil, args...)
+	l.log(LevelInfo, nil, args...)
 }
 func (l *Logger) Infof(format string, args ...interface{}) {
-	l.log(INFO, &format, args...)
+	l.log(LevelInfo, &format, args...)
 }
 
 func (l *Logger) Debug(args ...interface{}) {
-	l.log(DEBUG, nil, args...)
+	l.log(LevelDebug, nil, args...)
 }
 func (l *Logger) Debugf(format string, args ...interface{}) {
-	l.log(DEBUG, &format, args...)
+	l.log(LevelDebug, &format, args...)
 }
 
 func Fatal(args ...interface{})                 { logger.Fatal(args...) }

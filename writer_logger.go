@@ -1,14 +1,14 @@
 package glog
 
 import (
-	"log"
 	"fmt"
 	"io"
+	"log"
 )
 
 const (
-	DATE_TIME      = log.Ldate | log.Ltime
-	DATE_TIME_FILE = log.Ldate | log.Ltime | log.Lshortfile
+	FlagsDateTime     = log.Ldate | log.Ltime
+	FlagsDateTimeFile = log.Ldate | log.Ltime | log.Lshortfile
 )
 
 type LoggerLogWriter struct {

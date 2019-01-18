@@ -3,20 +3,20 @@ package glog
 type Level int
 
 const (
-	ERROR Level = iota
-	WARN
-	INFO
-	DEBUG
-	NONE
+	LevelError Level = iota
+	LevelWarn
+	LevelInfo
+	LevelDebug
+	LevelNone
 )
 
-var LEVELS = map[Level]string{
-	ERROR: "ERROR",
-	WARN:  "WARN",
-	INFO:  "INFO",
-	DEBUG: "DEBUG",
+var Levels = map[Level]string{
+	LevelError: "ERROR",
+	LevelWarn:  "WARN",
+	LevelInfo:  "INFO",
+	LevelDebug: "DEBUG",
 }
 
 func (l Level) String() string {
-	return LEVELS[l]
+	return Levels[l]
 }
